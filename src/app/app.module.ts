@@ -11,10 +11,12 @@ import {UserService} from './service/userService';
 import { FourOhFourErrorComponent } from './four-oh-four-error/four-oh-four-error.component';
 import { AllBooksComponent } from './all-books/all-books.component';
 import {BookService} from './service/bookService';
+import { SingleBookComponent } from './single-book/single-book.component';
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthComponent},
-  {path: 'all-books', component: AllBooksComponent},
+  {path: 'books', component: AllBooksComponent},
+  {path: 'book/:id', component: SingleBookComponent},
   {path: 'error-404', component: FourOhFourErrorComponent},
   {path: '**', redirectTo: '/error-404'}
 ];
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     AppComponent,
     AuthComponent,
     FourOhFourErrorComponent,
-    AllBooksComponent
+    AllBooksComponent,
+    SingleBookComponent
   ],
   imports: [
     BrowserModule,
