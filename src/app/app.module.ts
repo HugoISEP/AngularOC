@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './service/authService';
 import { Routes, RouterModule } from '@angular/router';
 import {UserService} from './service/userService';
@@ -16,8 +16,9 @@ import { SingleBookComponent } from './single-book/single-book.component';
 const appRoutes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'books', component: AllBooksComponent},
-  {path: 'book/:id', component: SingleBookComponent},
+  {path: 'books/:id', component: SingleBookComponent},
   {path: 'error-404', component: FourOhFourErrorComponent},
+  { path: '',   redirectTo: '/auth', pathMatch: 'full' },
   {path: '**', redirectTo: '/error-404'}
 ];
 @NgModule({
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,

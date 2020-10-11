@@ -15,6 +15,13 @@ export class BookService {
   getAllBooks(): Book[] {
     return this.allBooks;
   }
+  getBookById(id: number): Book {
+    return this.allBooks.find(b => b.id === id);
+  }
+  editABook(book: Book): void {
+    this.allBooks = this.allBooks.filter(b => b.id !== book.id);
+    this.allBooks.push(book);
+  }
   editAvailableStatus(book: Book): void {
     this.allBooks.find(b => b.id === book.id).available = !book.available;
   }

@@ -22,6 +22,9 @@ export class AllBooksComponent implements OnInit {
   handleClick(book: Book): void {
     this.bookService.editAvailableStatus(book);
   }
+  toogleBook(book: Book): void {
+    this.router.navigate(['/books', book.id]);
+  }
   getBookStatus(book: Book): string {
     if (book.available) {
       return 'Available';

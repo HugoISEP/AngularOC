@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../service/authService';
 import {User} from '../service/userService';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +13,7 @@ export class AuthComponent implements OnInit {
 
   authStatus = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -22,6 +23,9 @@ export class AuthComponent implements OnInit {
   onSubmit(form: NgForm): void {
     const user: User = {email: form.form.value.email, password: form.form.value.password};
     this.authStatus = this.authService.signIn(user);
+    if (this.authStatus){
+      this.router.navigate(['/books']);
+    }
   }
 
   disconnect(): void {
