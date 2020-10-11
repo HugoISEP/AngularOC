@@ -10,9 +10,11 @@ import { Routes, RouterModule } from '@angular/router';
 import {UserService} from './service/userService';
 import { FourOhFourErrorComponent } from './four-oh-four-error/four-oh-four-error.component';
 import { AllBooksComponent } from './all-books/all-books.component';
+import {BookService} from './service/bookService';
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthComponent},
+  {path: 'all-books', component: AllBooksComponent},
   {path: 'error-404', component: FourOhFourErrorComponent},
   {path: '**', redirectTo: '/error-404'}
 ];
@@ -32,6 +34,7 @@ const appRoutes: Routes = [
   providers: [
     AuthService,
     UserService,
+    BookService,
   ],
   bootstrap: [AppComponent]
 })
