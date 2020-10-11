@@ -7,14 +7,21 @@ import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from './service/authService';
 import { Routes, RouterModule } from '@angular/router';
+import {UserService} from './service/userService';
+import { FourOhFourErrorComponent } from './four-oh-four-error/four-oh-four-error.component';
+import { AllBooksComponent } from './all-books/all-books.component';
 
 const appRoutes: Routes = [
-  {path: 'auth', component: AuthComponent}
+  {path: 'auth', component: AuthComponent},
+  {path: 'error-404', component: FourOhFourErrorComponent},
+  {path: '**', redirectTo: '/error-404'}
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    FourOhFourErrorComponent,
+    AllBooksComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +31,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

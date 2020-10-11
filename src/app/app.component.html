@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,13 +9,18 @@
         <a class="nav-link" routerLink="auth">My account<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Books</a>
+        <a class="nav-link" >Books</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Info</a>
+        <a class="nav-link">Info</a>
       </li>
     </ul>
   </div>
+  <ul *ngIf="authStatus" class="nav navbar-nav navbar-right">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Déconnnexion</a>
+    </li>
+  </ul>
 </nav>
 <div class="container">
       <router-outlet></router-outlet>

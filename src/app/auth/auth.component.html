@@ -1,4 +1,4 @@
-<div *ngIf="!auth" class="card" style="width: 50%;">
+<div *ngIf="!authStatus" class="card" style="width: 50%;">
   <div class="card-body">
     <form (ngSubmit)="onSubmit(formElement)" #formElement="ngForm">
       <div class="form-group">
@@ -13,4 +13,7 @@
     </form>
   </div>
 </div>
-<h1 *ngIf="auth">You are logged in</h1>
+<div  *ngIf="authStatus">
+  <h1 class="display-1">You are logged in</h1>
+  <button type="button" class="btn btn-danger" (click)="disconnect()">Disconnect</button>
+</div>
