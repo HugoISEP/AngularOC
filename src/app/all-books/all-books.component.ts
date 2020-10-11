@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService, Book} from '../service/bookService';
+import {Router} from '@angular/router';
+import {AuthService} from '../service/authService';
 
 @Component({
   selector: 'app-all-books',
@@ -8,9 +10,12 @@ import {BookService, Book} from '../service/bookService';
 })
 export class AllBooksComponent implements OnInit {
   allBooks: Book[];
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.authService.isAuth) {
+      this.router.navigate(['/auth']);
+    }
     this.allBooks = this.bookService.getAllBooks();
   }
 
