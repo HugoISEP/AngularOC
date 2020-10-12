@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../service/authService';
 import {User} from '../service/userService';
 import {Router} from '@angular/router';
+import {NOTIFICATION_TYPE, NotificationService} from '../service/notificationService';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +14,7 @@ export class AuthComponent implements OnInit {
 
   authStatus = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class AuthComponent implements OnInit {
     this.authStatus = this.authService.signIn(user);
     if (this.authStatus){
       this.router.navigate(['/books']);
+      this.notificationService.addANotification('Connexion réussie', NOTIFICATION_TYPE.success);
     }
   }
 

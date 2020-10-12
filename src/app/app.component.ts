@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './service/authService';
+import {NotificationService} from './service/notificationService';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,9 @@ import {AuthService} from './service/authService';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  hasNotificationMessage = '';
   authStatus = false;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private notificationService: NotificationService) {
   }
 
   ngOnInit() {

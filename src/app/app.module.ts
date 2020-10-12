@@ -13,6 +13,8 @@ import { AllBooksComponent } from './all-books/all-books.component';
 import {BookService} from './service/bookService';
 import { SingleBookComponent } from './single-book/single-book.component';
 import { NewBookComponent } from './new-book/new-book.component';
+import {NotificationService} from './service/notificationService';
+import { NotificationComponent } from './notification/notification.component';
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthComponent},
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     FourOhFourErrorComponent,
     AllBooksComponent,
     SingleBookComponent,
-    NewBookComponent
+    NewBookComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ const appRoutes: Routes = [
     AuthService,
     UserService,
     BookService,
+    NotificationService,
   ],
   bootstrap: [AppComponent]
 })
