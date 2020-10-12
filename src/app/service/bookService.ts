@@ -29,7 +29,10 @@ export class BookService {
     this.allBooks.find(b => b.id === book.id).available = !book.available;
   }
   createBook(book: BookForm): void {
-    const newId = Math.max(...this.allBooks.map(b => b.id)) + 1;
+    const newId = Math.max(...this.allBooks.map(b => b.id), 0) + 1;
     this.allBooks.push({id : newId, ...book});
+  }
+  deleteABook(bookId: number): void{
+    this.allBooks = this.allBooks.filter(b => b.id !== bookId);
   }
 }

@@ -23,6 +23,10 @@ export class SingleBookComponent implements OnInit {
     this.bookService.editABook(editedBook);
     this.router.navigate(['/books']);
   }
+  deleteABook(): void{
+    this.bookService.deleteABook(+this.route.snapshot.paramMap.get('id'));
+    this.router.navigate(['/books']);
+  }
   initForm(): void {
     this.bookForm = this.formBuilder.group({
       title: this.book.title,

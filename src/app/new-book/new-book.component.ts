@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Book, BookService} from '../service/bookService';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../service/authService';
 
 @Component({
   selector: 'app-new-book',
@@ -10,9 +11,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class NewBookComponent implements OnInit {
   bookForm: FormGroup;
-  constructor(private router: Router, private bookService: BookService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private authService: AuthService,  private bookService: BookService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    if (!this.authService.isAuth) {
+      this.router.navigate(['/books']);
+    }
     this.initForm();
   }
   onSubmit(): void {
