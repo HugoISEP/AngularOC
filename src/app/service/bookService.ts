@@ -1,9 +1,12 @@
-export type Book = {
-  id: number;
+type BookForm = {
   author: string;
   title: string;
   description: string;
   available: boolean;
+};
+
+export type Book = BookForm & {
+  id: number;
 };
 
 export class BookService {
@@ -24,5 +27,9 @@ export class BookService {
   }
   editAvailableStatus(book: Book): void {
     this.allBooks.find(b => b.id === book.id).available = !book.available;
+  }
+  createBook(book: BookForm): void {
+    const newId = Math.max(...this.allBooks.map(b => b.id)) + 1;
+    this.allBooks.push({id : newId, ...book});
   }
 }
