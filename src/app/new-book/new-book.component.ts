@@ -15,9 +15,6 @@ export class NewBookComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService,  private bookService: BookService, private formBuilder: FormBuilder, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    if (!this.authService.isAuth) {
-      this.router.navigate(['/books']);
-    }
     this.initForm();
   }
   onSubmit(): void {

@@ -15,12 +15,13 @@ import { SingleBookComponent } from './single-book/single-book.component';
 import { NewBookComponent } from './new-book/new-book.component';
 import {NotificationService} from './service/notificationService';
 import { NotificationComponent } from './notification/notification.component';
+import {AuthGardService} from './service/authGardService';
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthComponent},
-  {path: 'books', component: AllBooksComponent},
-  {path: 'new-book', component: NewBookComponent},
-  {path: 'books/:id', component: SingleBookComponent},
+  {path: 'books', canActivate: [AuthGardService], component: AllBooksComponent},
+  {path: 'new-book', canActivate: [AuthGardService], component: NewBookComponent},
+  {path: 'books/:id', canActivate: [AuthGardService], component: SingleBookComponent},
   {path: 'error-404', component: FourOhFourErrorComponent},
   { path: '',   redirectTo: '/auth', pathMatch: 'full' },
   {path: '**', redirectTo: '/error-404'}
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
+    AuthGardService,
     UserService,
     BookService,
     NotificationService,

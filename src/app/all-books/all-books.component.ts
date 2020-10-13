@@ -13,9 +13,6 @@ export class AllBooksComponent implements OnInit {
   constructor(private bookService: BookService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.authService.isAuth) {
-      this.router.navigate(['/auth']);
-    }
     this.allBooks = this.bookService.getAllBooks();
   }
 
